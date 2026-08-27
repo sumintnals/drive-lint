@@ -2,10 +2,18 @@ import argparse
 import sys
 from pathlib import Path
 
-from .checkers import grid, pane, tab
+from .checkers import grid, list as list_checker, long_message, message, pane, signin, tab
 from .models import Violation
 
-CHECKERS = [grid.check, pane.check, tab.check]
+CHECKERS = [
+    grid.check,
+    pane.check,
+    tab.check,
+    list_checker.check,
+    long_message.check,
+    message.check,
+    signin.check,
+]
 
 
 def iter_kotlin_files(root: Path):
