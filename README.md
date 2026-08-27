@@ -4,12 +4,17 @@
 
 Android Auto 앱(Car App Library 기반)의 Kotlin 소스코드를 정적 분석해 운전자 주의분산 방지 가이드라인(Design for Driving)의 MUST/하드캡 위반을 자동으로 검출하는 CLI 도구입니다.
 
-소스코드에서 `XxxTemplate.Builder()` 호출 패턴을 텍스트로 분석하기 때문에 앱을 빌드하거나 실행할 필요가 없습니다.
+## 빠른 실행 (설치 없이)
+
+```bash
+git clone <이 리포지토리>
+cd drive-lint
+python3 -m drivelint check ./검사할프로젝트경로
+```
 
 ## 설치
 
 ```bash
-git clone <이 리포지토리>
 cd drive-lint
 python3 -m venv .venv
 source .venv/bin/activate
@@ -22,6 +27,7 @@ pip install -e .
 
 ```bash
 drivelint check ./검사할프로젝트경로
+# 또는 설치 없이: python3 -m drivelint check ./검사할프로젝트경로
 ```
 
 특정 파일 검사
@@ -41,6 +47,10 @@ drivelint check ./MyScreen.kt
 | PANE-009 | Pane | 정보 행이 0개 | MUST |
 | PANE-010 | Pane | 정보 행이 5개 이상 (최대 4) | 하드캡 |
 | TAB-013 | Tab | 탭 개수가 2~4개 범위 밖 | 하드캡 |
+| LIST-001 | List | 섹션 헤더가 빈 문자열 | MUST |
+| MESSAGE-006 | Message | 본문 텍스트가 빈 문자열 | MUST |
+| LONG-MESSAGE-005 | Long Message | 본문 텍스트가 빈 문자열 | MUST |
+| SIGNIN-014 | Sign-in | 알려진 로그인 방식 클래스가 안 보임 | MUST |
 
 ## 개발
 
